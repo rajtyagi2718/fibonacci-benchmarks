@@ -1,0 +1,14 @@
+
+-fibonacci
+  -recursion
+  -memoized
+  -iterative
+  -closed
+
+funct
+count_func
+time_func
+
+write data
+graph data
+
