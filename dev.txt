@@ -1,14 +1,22 @@
-
 -fibonacci
   -recursion
   -memoized
   -iterative
   -closed
+  -squared
 
-funct
-count_func
-time_func
+-profilers
+  -timeit
+  function calls
+  stack size
+  heap size 
+
+graph data
+  times
+    -all
+    linear
+    squared
+  memory
+  errors
 
 write data
-graph data
-

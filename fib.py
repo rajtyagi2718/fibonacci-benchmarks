@@ -61,27 +61,17 @@ def fib_mem_pp(n):
 
 @register('iterative++')
 def fib_itr_pp(n):
-    # F0 = [0]  Fn = [ fn ]  M = [0 1]  R = [1 0]
-    #      [1]       [fn+1]      [1 1]    = [0 1]
+    # F0 = [0]  Fn = [ fn ]  M = [0 1]  R = [1 0] = [a b]
+    #      [1]       [fn+1]      [1 1]      [0 1]   [b c]
     # Fn = M**n * F0
-    m01 = m10 = m11 = r00 = r11 = 1
-    m00 = r10 = r01 = 0
-    print(n, bin(n)[2:][::-1])
-    print('%d %d\t%d %d\n%d %d\t%d %d\n' % (m00, m01, r00, r01, m10, m11, r10, r11))
-    for x in bin(n)[2:][::-1]:
+    a, b, c = 1, 0, 1
+    # bin(6) = '0b110'
+    for x in bin(n)[2:]:
+        # R **= 2
+        s = b*b
+        a, b, c = s+a*a, b*(a+c), s+c*c
         if x == '1':
             # R *= M  
-            r00, r01, r10, r11 = r00*m00+r01*m10, r00*m01+r01*m11, r10*m00+r11*m10, r10*m01+r11*m11
-        # M **= 2
-        m00, m01, m10, m11 = m00**2+m01*m10, m01*(m01+m10), m01*(m00+m11), m11*2+m01*m10
-        print('%d %d\t%d %d\n%d %d\t%d %d\n' % (m00, m01, r00, r01, m10, m11, r10, r11))
+            a, b, c = b, c, b+c
     # R = M**n 
-    return r01
-
-    v1, v2, v3 = 1, 1, 0    # initialise a matrix [[1,1],[1,0]]
-    for rec in bin(n)[3:]:  # perform fast exponentiation of the matrix (quickly raise it to the nth power)
-        calc = v2*v2
-        v1, v2, v3 = v1*v1+calc, (v1+v3)*v2, calc+v3*v3
-        if rec=='1':    v1, v2, v3 = v1+v2, v1, v2
-    return v2
-    
+    return b

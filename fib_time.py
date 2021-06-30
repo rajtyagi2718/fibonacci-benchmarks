@@ -7,14 +7,20 @@ def time_fib(name, n):
     time = timeit.repeat(setup=setup, stmt=stmt, repeat=10, number=1)    
     return min(time) * 1e6
 
-nums = {}
-values = [2**i for i in range(11)]
-nums['recursive'] = [2**i for i in range(5)]
-nums['memoized']  = [2**i for i in range(11)]
-nums['iterative'] = [2**i for i in range(13)]
-nums['closed']    = [2**i for i in range(11)]
-nums['recursive++'] = [2**i for i in range(8)]
-nums['memoized++'] = [2**i for i in range(14)]
+values = [2**i for i in range(25)]
+powers = {'recursive'   : 5,
+          'memoized'    : 11,
+          'iterative'   : 13,
+          'closed'      : 11,
+          'recursive++' : 8,
+          'memoized++'  : 16,
+          'iterative++' : 16,
+}
+nums = {name : values[:i] for name,i in powers.items()}
+# default to power 5
+for name in fibs:
+    if name not in nums:
+        nums[name] = values[:5]
 
 times = {}
 for name, num in nums.items():
