@@ -1,8 +1,17 @@
-from fib import fibs
-from memory_profiler import memory_usage
+import tracemalloc
+import gc
+
+from fib import fibs, fib_rec
 
 def memory_fib(name, n):
-    return memory_usage((fibs[name], (n,)), max_usage=True)
+    gc.collect()
+    tracemalloc.start()
+    fibs[name](n)
+    _,peak = tracemalloc.get_traced_memory()
+    tracemalloc.stop()
+    gc.collect()
+    return peak
+    
 
 values = [2**i for i in range(25)]
 powers = {'recursive'   : 5,
@@ -19,10 +28,16 @@ for name in fibs:
     if name not in nums:
         nums[name] = values[:1]
 
-if __name__ == '__main__':
-    memory = {}
-    for name, num in nums.items():
-        print(name, num)
-        memory[name] = [memory_fib(name, n) for n in num]
-    print(memory)
+mems = {}
+for name, num in nums.items():
+    mems[name] = [memory_fib(name, n) for n in num]
 
+mems1 = {}
+for name, num in nums.items():
+    mems1[name] = [memory_fib(name, n) for n in num]
+
+
+if __name__ == '__main__':
+    print(*mems.items(), sep='\n')
+    print()
+    print(*mems1.items(), sep='\n')
