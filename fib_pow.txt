@@ -1,7 +1,7 @@
-recursive 5
-memoized 11
-iterative 13
-closed 11
-recursive++ 8
-memoized++ 16
-iterative++ 16
+recursive 4
+memoized 10
+iterative 12
+closed 10
+recursive++ 9
+memoized++ 15
+iterative++ 15

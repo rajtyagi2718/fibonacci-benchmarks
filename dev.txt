@@ -20,3 +20,13 @@ graph data
   errors
 
 write data
+
+
+python modules
+  matplotlib
+  unittest
+  tracemalloc
+  argparse
+languages
+  python
+  bash

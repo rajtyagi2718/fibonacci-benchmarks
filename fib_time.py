@@ -5,31 +5,22 @@ def time_fib(name, n):
     setup = "from fib import fibs\nfib = fibs['%s']" % name
     stmt = 'fib(%d)' % n
     time = timeit.repeat(setup=setup, stmt=stmt, repeat=10, number=1)    
-    return min(time) * 1e6
+    return sum(time) / len(time) * 1e6
 
-values = [2**i for i in range(25)]
-powers = {'recursive'   : 5,
-          'memoized'    : 11,
-          'iterative'   : 13,
-          'closed'      : 11,
-          'recursive++' : 8,
-          'memoized++'  : 16,
-          'iterative++' : 16,
-}
-nums = {name : values[:i] for name,i in powers.items()}
-# default to power 5
-for name in fibs:
-    if name not in nums:
-        nums[name] = values[:5]
+if __name__ == '__main__':
+    nums = [2**i for i in range(25)]
+    times = {}
 
-times = {}
-for name, num in nums.items():
-    times[name] = [time_fib(name, n) for n in num]
+    with open('fib_pow.txt', 'r') as f:
+        print("measuring execution times.")
+        for line in f:
+            name,pow = line.split() 
+            times[name] = [(n, time_fib(name, n)) for n in nums[:int(pow)+1]]
 
-"""
-with open('data.txt', 'w') as f:
-    f.write('fib ' + ' '.join(str(x) for x in nums['closed']) + '\n')
-    for name, value in times.items():
-        f.write(name + ' ' + ' '.join(str(x) for x in value) + '\n') 
-    print('data write complete.')
-"""
+    with open('data_time.txt', 'w') as f:
+        print("writing to file.")
+        for name,values in times.items():
+            for num,time in values:
+                f.write("%s %s %s\n" % (name, num, time))
+
+    print("fib_time complete.")

@@ -12,9 +12,7 @@ if __name__ == '__main__':
     tracemalloc.start()
     fibs[args.name](args.n)
     _,peak = tracemalloc.get_traced_memory()
-    print(peak)
     tracemalloc.stop()
-    print(args.name, args.n, peak)
 
     with open('data_mem.txt', 'a') as f:
-        f.write(' '.join(map(str, (args.name, args.n, peak))))
+        f.write(' '.join(map(str, (args.name, args.n, peak))) + '\n')
