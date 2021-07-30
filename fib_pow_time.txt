@@ -2,6 +2,6 @@ recursive 4
 memoized 10
 iterative 12
 closed 10
-recursive++ 9
-memoized++ 15
+recursive++ 8
+memoized++ 16
 iterative++ 15

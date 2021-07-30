@@ -11,7 +11,7 @@ if __name__ == '__main__':
     nums = [2**i for i in range(25)]
     times = {}
 
-    with open('fib_pow.txt', 'r') as f:
+    with open('fib_pow_time.txt', 'r') as f:
         print("measuring execution times.")
         for line in f:
             name,pow = line.split() 

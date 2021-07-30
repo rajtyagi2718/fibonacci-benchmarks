@@ -10,7 +10,7 @@ while read line; do
     python fib_mem.py $name $n
     (( n*=2 ))
   done
-done < fib_pow.txt
+done < fib_pow_mem.txt
 
 echo "writing to file."
 echo "fib_mem complete."

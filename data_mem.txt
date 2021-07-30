@@ -3,6 +3,7 @@ recursive 2 1264
 recursive 4 2944
 recursive 8 6304
 recursive 16 13190
+recursive 32 27078
 memoized 1 1088
 memoized 2 1528
 memoized 4 1968
@@ -11,9 +12,6 @@ memoized 16 5480
 memoized 32 10040
 memoized 64 19300
 memoized 128 38428
-memoized 256 77164
-memoized 512 161212
-memoized 1024 281020
 iterative 1 544
 iterative 2 544
 iterative 4 544
@@ -27,6 +25,10 @@ iterative 512 752
 iterative 1024 896
 iterative 2048 1184
 iterative 4096 1748
+iterative 8192 2888
+iterative 16384 5168
+iterative 32768 9716
+iterative 65536 18812
 closed 1 482
 closed 2 482
 closed 4 482
@@ -47,7 +49,6 @@ recursive++ 32 4832
 recursive++ 64 5744
 recursive++ 128 6668
 recursive++ 256 7814
-recursive++ 512 8770
 memoized++ 1 1112
 memoized++ 2 1112
 memoized++ 4 2024
@@ -64,6 +65,7 @@ memoized++ 4096 9704
 memoized++ 8192 13260
 memoized++ 16384 19668
 memoized++ 32768 31776
+memoized++ 65536 55204
 iterative++ 1 532
 iterative++ 2 584
 iterative++ 4 586
@@ -80,3 +82,4 @@ iterative++ 4096 3286
 iterative++ 8192 6243
 iterative++ 16384 13224
 iterative++ 32768 27045
+iterative++ 65536 54450

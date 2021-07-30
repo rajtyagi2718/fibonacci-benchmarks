@@ -1,13 +1,7 @@
 import matplotlib.pyplot as plt
-from fib_time import nums, times
+from fib import fibs
 
-"""
-try:
-    with open('data.txt', 'r') as f:
-        
-except FileNotFoundError:
-    print('data.txt file not found.')
-"""
+names = list(fibs.keys())
 
 tableau20 = [(r / 255, g / 255, b / 255) for r,g,b in (
     (31, 119, 180), (174, 199, 232), (255, 127, 14), (255, 187, 120),
@@ -16,37 +10,49 @@ tableau20 = [(r / 255, g / 255, b / 255) for r,g,b in (
     (227, 119, 194), (247, 182, 210), (127, 127, 127), (199, 199, 199),
     (188, 189, 34), (219, 219, 141), (23, 190, 207), (158, 218, 229))]    
 
-names = list(nums.keys())
-values = {'recursive'   : 0,
-          'memoized'    : 4,
-          'iterative'   : 6,
-          'closed'      : 8,
-          'recursive++' : 1,
-          'memoized++'  : 5,
-          'iterative++' : 7,
-}
-colors = {name : tableau20[i] for name,i in values.items()}
-# default to gray
-for name in names:
-    if name not in colors:
-        colors[name] = tableau20[14]
-  
-plt.rc('xtick', labelsize=8)
-plt.rc('ytick', labelsize=9.5)
-plt.figure(figsize=(8, 6))
-ax = plt.subplot(111)    
-ax.spines["top"].set_visible(False)    
-ax.spines["bottom"].set_visible(False)    
-ax.spines["right"].set_visible(False)    
-ax.spines["left"].set_visible(False)  
-ax.tick_params(axis=u'both', which=u'both',length=0)
+colors = {name : tableau20[i] for name,i in zip(names, [0,4,6,8,1,5,7])}
 
-plt.title('Execution time of nth Fibionacci algorithms (\u03BCs)', fontsize=16)
+def data(file):
+    nums = {}
+    data = {}
+    try:
+        with open(file, 'r') as f:
+            for line in f:
+                name, n, time = line.split()
+                nums[name] = nums.get(name, []) + [n]
+                data[name] = data.get(name, []) + [float(time)]    
+    except FileNotFoundError:
+        print('%s file not found.' % file)
+    return nums, data
 
-for name in names:
-    plt.plot([str(x) for x in nums[name]], times[name], color=colors[name],
-             linestyle='-', marker='o')
-    plt.annotate(name, (str(nums[name][-1]), times[name][-1] + 5),
-                 color=colors[name], fontsize=9.5)
-plt.grid(axis='y')
-plt.show()
+def plot(title, nums, data, yoffset):
+    plt.rc('xtick', labelsize=8)
+    plt.rc('ytick', labelsize=9.5)
+    plt.figure(figsize=(10, 5))
+    ax = plt.subplot(111)    
+    ax.spines["top"].set_visible(False)    
+    ax.spines["bottom"].set_visible(False)    
+    ax.spines["right"].set_visible(False)    
+    ax.spines["left"].set_visible(False)  
+    ax.tick_params(axis=u'both', which=u'both',length=0)
+
+    plt.title(title, fontsize=16)
+
+    for name in names:
+        plt.plot(nums[name], data[name], color=colors[name],
+                 linestyle='-', marker='o')
+        plt.annotate(name, (nums[name][-1], data[name][-1] + yoffset),
+                     color=colors[name], fontsize=9.5)
+    plt.grid(axis='y')
+    plt.show()
+
+if __name__ == '__main__':
+    nums, times = data('data_time.txt')
+    plot('Execution time of nth Fibionacci algorithms (\u03BCs)',
+         nums, times, 15)
+
+    nums, mems = data('data_mem.txt')
+    for name in names:
+        mems[name] = [x / 1000 for x in mems[name]]
+    plot('Memory allocation of nth Fibionacci algorithms (KiB)', 
+         nums, mems, 1)
