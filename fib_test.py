@@ -1,7 +1,19 @@
-from fib import fibs
-import unittest
 import random
+import unittest
 
+from fib import fibs
+
+
+test_funcs = []
+
+def register(func):
+    test_funcs.append(func)
+    def decorator(*args):
+        return func(*args)
+    return decorator
+
+
+@register
 def test_base_cases(name, fib):
 
     class BaseCasesTestCase(unittest.TestCase):
@@ -16,6 +28,7 @@ def test_base_cases(name, fib):
 
     return BaseCasesTestCase 
 
+@register
 def test_first_ten(name, fib):
 
     class FirstTenTestCase(unittest.TestCase):
@@ -29,6 +42,7 @@ def test_first_ten(name, fib):
 
     return FirstTenTestCase 
 
+@register
 def test_thirty(name, fib):
 
     class ThirtyTestCase(unittest.TestCase):
@@ -42,7 +56,7 @@ def test_thirty(name, fib):
 
 
 test_cases = [*(test_func(*item) for item in fibs.items() 
-              for test_func in (test_base_cases, test_first_ten, test_thirty))]
+              for test_func in test_funcs)]
 
 def load_tests(loader, tests, pattern):
     suite = unittest.TestSuite()
@@ -50,6 +64,7 @@ def load_tests(loader, tests, pattern):
         tests = loader.loadTestsFromTestCase(test_class)
         suite.addTests(tests)
     return suite
+
 
 if __name__ == '__main__':
     unittest.main()

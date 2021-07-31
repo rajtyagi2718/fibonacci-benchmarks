@@ -8,6 +8,7 @@ def register(name):
         return wrapper
     return decorator
 
+
 @register('recursive')
 def fib_rec(n):
     if n < 2:

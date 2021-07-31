@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo "measuring memory usage." 
-rm data_mem.txt &> /dev/null
+echo "measuring memory usage" 
+rm mem_data.txt &> /dev/null
 
 while read line; do
   read name pow <<< "$line"
@@ -10,7 +10,6 @@ while read line; do
     python fib_mem.py $name $n
     (( n*=2 ))
   done
-done < fib_pow_mem.txt
+done < pow_data.txt
 
-echo "writing to file."
-echo "fib_mem complete."
+echo "writing to file"

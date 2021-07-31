@@ -1,7 +1,0 @@
-recursive 5
-memoized 7
-iterative 16
-closed 10
-recursive++ 8
-memoized++ 16
-iterative++ 16
