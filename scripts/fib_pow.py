@@ -1,7 +1,7 @@
 from contextlib import contextmanager
 import signal
 
-from fib import fibs
+from fib.fib import fibs
 
 
 def raise_timeout(signum, frame):
@@ -21,6 +21,9 @@ def timeout(fib, num, time):
         yield False
     except OverflowError:
         yield False
+    except Exception as inst:
+        print('unexpected exception: %s' % str(inst))
+        yield False
     finally:
         signal.signal(signal.SIGALRM, signal.SIG_IGN)
 
@@ -39,8 +42,7 @@ def timeout_fibs(time):
     return pows
 
 def write_pows(pows):
-    with open('pow_data.txt', 'w') as f:
-        print("writing to file")
+    with open('data/pow_data.txt', 'w') as f:
         for name, pow in pows.items():
             f.write("%s %s \n" % (name, pow))
 

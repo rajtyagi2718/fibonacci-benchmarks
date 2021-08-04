@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 
-from fib import fibs
+from fib.fib import fibs
+
 
 names = list(fibs.keys())
 
@@ -84,15 +85,15 @@ def plot(title, nums, data, yoffset):
 
 
 def plot_times():
-    print("plotting execution time data")
-    nums, times = data('time_data.txt')
+    print("plotting execution time")
+    nums, times = data('data/time_data.txt')
     trim(nums, times, time_stops)
     plot('Execution time of nth Fibionacci algorithms (\u03BCs)',
          nums, times, 15)
 
 def plot_mems():
-    print("plotting memory allocation data")
-    nums, mems = data('mem_data.txt')
+    print("plotting memory allocation")
+    nums, mems = data('data/mem_data.txt')
     trim(nums, mems, mem_stops)
     for name in names:
         mems[name] = [x / 1000 for x in mems[name]]

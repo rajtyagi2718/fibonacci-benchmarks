@@ -7,26 +7,28 @@
 
 -profilers
   -timeit
-  function calls
+  -tracemalloc
+  -timeout
   stack size
   heap size 
 
-graph data
-  times
-    -all
-    linear
-    squared
-  memory
+-graph data
+  -times
+  -memory
   errors
 
-write data
+organize files
+  /data /fib /profiler /plots .sh   
 
 
 python modules
-  matplotlib
-  unittest
-  tracemalloc
   argparse
+  contextlib
+  matplotlib
+  signal
+  tracemalloc
+  unittest
+
 languages
   python
   bash

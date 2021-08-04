@@ -1,7 +1,7 @@
 import argparse
 import tracemalloc
 
-from fib import fibs
+from fib.fib import fibs
 
 
 parser = argparse.ArgumentParser(
@@ -17,5 +17,5 @@ if __name__ == '__main__':
     _,peak = tracemalloc.get_traced_memory()
     tracemalloc.stop()
 
-    with open('mem_data.txt', 'a') as f:
+    with open('data/mem_data.txt', 'a') as f:
         f.write(' '.join(map(str, (args.name, args.n, peak))) + '\n')

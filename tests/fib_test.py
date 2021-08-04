@@ -1,7 +1,7 @@
 import random
 import unittest
 
-from fib import fibs
+from fib.fib import fibs
 
 
 test_funcs = []
@@ -64,7 +64,3 @@ def load_tests(loader, tests, pattern):
         tests = loader.loadTestsFromTestCase(test_class)
         suite.addTests(tests)
     return suite
-
-
-if __name__ == '__main__':
-    unittest.main()
