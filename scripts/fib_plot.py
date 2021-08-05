@@ -50,9 +50,9 @@ def data(file):
     try:
         with open(file, 'r') as f:
             for line in f:
-                name, n, time = line.split()
+                name, n, qty = line.split()
                 nums[name] = nums.get(name, []) + [n]
-                data[name] = data.get(name, []) + [float(time)]    
+                data[name] = data.get(name, []) + [float(qty)]    
     except FileNotFoundError:
         print('%s file not found.' % file)
     return nums, data

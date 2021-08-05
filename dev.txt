@@ -17,8 +17,15 @@
   -memory
   errors
 
-organize files
+-organize files
   /data /fib /profiler /plots .sh   
+
+write up
+  add naive recursion script to demonstrate exponential complexity
+  hard bounds for each algo
+  fit functions classes to each function
+  more points: 2**.25 intervals
+  label time complexities on graph
 
 
 python modules
