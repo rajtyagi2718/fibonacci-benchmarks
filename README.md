@@ -5,9 +5,9 @@ Analysis of nth Fibonacci algorithms implemented in Python.
 
 ## Plots
 
-![alt text](https://github.com/rajtyagi2718/timestable/blob/master/plots/time_plot.png)
+![alt text](https://github.com/rajtyagi2718/fibonacci-benchmarks/blob/main/plots/time_plot.png)
 
-![alt text](https://github.com/rajtyagi2718/timestable/blob/master/plots/mem_plot.png)
+![alt text](https://github.com/rajtyagi2718/fibonacci-benchmarks/blob/main/plots/mem_plot.png)
 
 ### Notes
 
