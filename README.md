@@ -17,22 +17,21 @@ Analysis of nth Fibonacci algorithms implemented in Python.
 
 ## Algorithms
 
-Algorithms are derived from the following identities
+Algorithms are derived from the following identities with time complexity: exponential, logarithmic, constant.
 * Linear recurrence
-	F(n) = F(n-1) + F(n-2)
+  * F(n) = F(n-1) + F(n-2)
 * Quadratic recurrence
-	F(2n) = [F(n-1) + F(n+1)] * F(n)
-	F(2n-1) = F(n)^2 + F(n-1)^2
+  * F(2n) = [F(n-1) + F(n+1)] * F(n)
+  * F(2n-1) = F(n)^2 + F(n-1)^2
 * Closed form
-	F(n) = [phi^n - (-phi)^(-n)] / sqrt(5)
-	phi = [1 + sqrt(5)] / 2
-with time complexities: exponential, logarithmic, constant.
+  * F(n) = [phi^n - psi^n] / sqrt(5)
+  * phi = [1 + sqrt(5)] / 2
+  * psi = [1 - sqrt(5)] / 2
 
-Three implementations are considered
+Three implementations are considered with space complexity: exponential, linear, constant.  
 * Recursive: call stack grows with each function call from n to 1
 * Memoized: hash map grows with each cached output from 1 to n
 * Iterative: minimal set of parameters adjusted from 1 to n
-with space complexities: exponential, linear, constant.  
 
 The functions *recursive*, *memoized*, *iterative* use linear recurrence, *recursive++*, *memoized++*, *iterative++* use quadratic, *closed++* uses arbitrary precision floats.
 
