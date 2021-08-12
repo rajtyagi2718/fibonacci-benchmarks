@@ -33,11 +33,13 @@ def timeout_fibs(time):
     nums = [2**i for i in range(25)]
 
     for name, fib in fibs.items():
+        pow = len(nums)  
         for i, num in enumerate(nums):
             with timeout(fib, num, time) as result:
                 if not result:
-                    pows[name] = i-1
+                    pow = i-1
                     break
+        pows[name] = pow
 
     return pows
 

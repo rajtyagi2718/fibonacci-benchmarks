@@ -5,3 +5,4 @@ closed 10
 recursive++ 16 
 memoized++ 23 
 iterative++ 22 
+closed++ 25 

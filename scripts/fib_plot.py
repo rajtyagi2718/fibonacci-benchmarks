@@ -4,6 +4,7 @@ from fib.fib import fibs
 
 
 names = list(fibs.keys())
+names[3], names[-1] = names[-1], names[3]
 
 
 tableau20 = [(r / 255, g / 255, b / 255) for r,g,b in (
@@ -20,6 +21,7 @@ colors = {'recursive' : 0,
           'recursive++' : 1,
           'memoized++' : 5,
           'iterative++' : 7,
+          'closed++' : 9,
 }
 for name, i in colors.items():
     colors[name] = tableau20[i]
@@ -32,6 +34,7 @@ time_stops = {'recursive' : 5,
               'recursive++' : 9,
               'memoized++' : 17,
               'iterative++' : 16,
+              'closed++' : 17,
 }
 
 mem_stops = {'recursive' : 6,
@@ -41,6 +44,7 @@ mem_stops = {'recursive' : 6,
              'recursive++' : 9,
              'memoized++' : 16,
              'iterative++' : 16,
+             'closed++' : 17,
 }
 
 

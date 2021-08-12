@@ -76,3 +76,11 @@ def fib_itr_pp(n):
             a, b, c = b, c, b+c
     # R = M**n 
     return b
+
+from mpmath import phi, sqrt, fdiv, fmod, power
+
+@register('closed++')
+def fib_cls_pp(n):
+    approx = fdiv(power(phi, n), sqrt(5))
+    frac = fmod(approx, 1)
+    return int(approx - frac) + int(frac > .5)
