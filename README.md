@@ -59,8 +59,8 @@ of matrices.
 ## Scripts
 
 ## References
-[Lax Linear Algebra](https://github.com/rajtyagi2718/fibonacci-benchmarks/blob/main/assets/lax-linear-algebra-fibonacci.pdf)
-https://arxiv.org/pdf/1803.07199.pdf
-https://stackoverflow.com/questions/18172257/efficient-calculation-of-fibonacci-series
-https://cp-algorithms.com/algebra/fibonacci-numbers.html
-https://catonmat.net/linear-time-fibonacci
+* [Lax Linear Algebra](https://github.com/rajtyagi2718/fibonacci-benchmarks/blob/main/assets/lax-linear-algebra-fibonacci.pdf)
+* https://arxiv.org/pdf/1803.07199.pdf
+* https://stackoverflow.com/questions/18172257/efficient-calculation-of-fibonacci-series
+* https://cp-algorithms.com/algebra/fibonacci-numbers.html
+* https://catonmat.net/linear-time-fibonacci
