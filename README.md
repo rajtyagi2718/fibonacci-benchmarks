@@ -12,25 +12,29 @@ Analysis of nth Fibonacci algorithms implemented in Python.
 ### Notes
 
 * Beware of the log scale on the x-axis. 
-* The memory profiler includes overhead from the module.
+* Times are in microseconds, best of 5 runs.
+* Memory is peak usage, including overhead from the profiler.
 
 ## Algorithms
 
-The algorithms are derived from the following identities
-1. linear recurrence: F(n) = F(n-1) + F(n-2)
-2. quadratic recurrence: F(2n) = [F(n-1) + F(n+1)] * F(n)
-                         F(2n-1) = F(n)^2 + F(n-1)^2
-3. closed form: F(n) = [phi^n - (-phi)^(-n)] / sqrt(5)
-                 phi = [1 + sqrt(5)] / 2
+Algorithms are derived from the following identities
+* Linear recurrence
+	F(n) = F(n-1) + F(n-2)
+* Quadratic recurrence
+	F(2n) = [F(n-1) + F(n+1)] * F(n)
+	F(2n-1) = F(n)^2 + F(n-1)^2
+* Closed form
+	F(n) = [phi^n - (-phi)^(-n)] / sqrt(5)
+	phi = [1 + sqrt(5)] / 2
 with time complexities: exponential, logarithmic, constant.
 
 Three implementations are considered
-1. recursive: call stack grows with each function call from n to 1
-2. memoized: hash map grows with each cached output from 1 to n
-3. iterative: minimal set of parameters adjusted from 1 to n
+* Recursive: call stack grows with each function call from n to 1
+* Memoized: hash map grows with each cached output from 1 to n
+* Iterative: minimal set of parameters adjusted from 1 to n
 with space complexities: exponential, linear, constant.  
 
-The functions named 'recursive', 'memoized', 'iterative' use linear recurrence, 'recursive++', 'memoized++', 'iterative++' use quadratic, 'closed++' uses arbitrary precision floats.
+The functions *recursive*, *memoized*, *iterative* use linear recurrence, *recursive++*, *memoized++*, *iterative++* use quadratic, *closed++* uses arbitrary precision floats.
 
 ### Notes
 
@@ -40,12 +44,10 @@ on matrices.
 
 ## Analysis
 
-Interestingly, 'memoized++' runs faster than 'iterative++' after 2^12. Also 'closed++' memory consumption from arbitrary precision stays constant until 2^12. 
+Interestingly, *memoized++* runs faster than *iterative++* after 2^12. Also *closed++* arbitrary precision floats use constant memory until 2^12. 
 
 ## Tests
 
 ## Scripts
-
-## Errors
 
 ## References
